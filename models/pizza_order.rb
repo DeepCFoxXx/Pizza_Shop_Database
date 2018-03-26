@@ -80,4 +80,10 @@ class PizzaOrder
     return order
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM pizza_orders"
+    values = []
+    SqlRunner.run(sql, values)
+  end
+
 end
