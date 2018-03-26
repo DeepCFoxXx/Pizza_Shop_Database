@@ -21,7 +21,7 @@ class Customer
   end
 
   def save()
-    sql = "INSERT INTO customers 
+    sql = "INSERT INTO customers
     (
     name
     )
@@ -35,6 +35,20 @@ class Customer
     customer_hash = returned_array[0]
     id_string = customer_hash['id']
     @id = id_string.to_i
+  end
+
+  def update()
+    sql = "UPDATE customers
+    SET
+    (
+    name
+    ) =
+    (
+    $1
+    )
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
   end
 
 end
