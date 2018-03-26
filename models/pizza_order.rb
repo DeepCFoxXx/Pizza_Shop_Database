@@ -69,4 +69,15 @@ class PizzaOrder
     return orders
   end
 
+  def self.find(id)
+    sql = "SELECT *
+    FROM pizza_orders
+    WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    order_hash = results.first
+    order = PizzaOrder.new(order_hash)
+    return order
+  end
+
 end
