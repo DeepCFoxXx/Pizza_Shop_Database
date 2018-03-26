@@ -61,4 +61,12 @@ class PizzaOrder
     SqlRunner.run(sql, values)
   end
 
+  def self.all()
+    sql = "SELECT * FROM pizza_orders"
+    values = []
+    order_hashes = SqlRunner.run(sql, values)
+    orders = order_hashes.map { |order| PizzaOrder.new( order ) }
+    return orders
+  end
+
 end
