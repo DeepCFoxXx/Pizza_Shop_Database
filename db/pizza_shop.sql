@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS customers;
+
+CREATE TABLE customers (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255)
+);
