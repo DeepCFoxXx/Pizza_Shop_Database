@@ -23,4 +23,20 @@ class PizzaOrder
     return customer
   end
 
-end   
+  def save()
+    sql = "
+    INSERT INTO pizza_orders (
+    customer_id,
+    topping,
+    quantity
+    )
+    VALUES
+    (
+    $1, $2, $3
+    )
+    RETURNING id"
+    values = [@customer_id, @topping, @quantity]
+    @id = SqlRunner.run(sql, values)[0]['id'].to_i
+  end
+
+end
