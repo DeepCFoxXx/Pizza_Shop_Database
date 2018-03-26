@@ -1,3 +1,4 @@
+require('pry-byebug')
 require_relative('../models/pizza_order')
 require_relative('../models/customer')
 
@@ -29,3 +30,6 @@ order3 = PizzaOrder.new({
   'quantity'=> '10'
 })
 order3.save()
+
+binding.pry
+nil
