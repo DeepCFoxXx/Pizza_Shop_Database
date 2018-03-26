@@ -20,4 +20,21 @@ class Customer
     return order_objects
   end
 
-end   
+  def save()
+    sql = "INSERT INTO customers 
+    (
+    name
+    )
+    VALUES
+    (
+    $1
+    )
+    RETURNING *"
+    values = [@name]
+    returned_array = SqlRunner.run(sql, values)
+    customer_hash = returned_array[0]
+    id_string = customer_hash['id']
+    @id = id_string.to_i
+  end
+
+end
