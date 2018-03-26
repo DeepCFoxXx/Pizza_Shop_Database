@@ -39,4 +39,19 @@ class PizzaOrder
     @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
+  def update()
+    sql = "
+    UPDATE pizza_orders SET (
+      customer_id,
+      topping,
+      quantity
+    ) =
+    (
+      $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@customer_id, @topping, @quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
 end
